@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta nome="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Paulo Luccas</title>
+
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-indigo.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/style-mobile.css">
+	</head>
+	<body id="body" class="light-mode">
+		<div class="style">
+			<header class="mdl-layout__header mdl-layout__header--transparent mdl-layout__content">
+				<div class="flex-center position-ref full-height mdl-grid">
+					<div class="content">
+
+						<h1>PAULO LUCCAS</h1>
+						
+						<div class="slogan">
+							<div class="word">
+								<span class="myWord"></span>
+								<div class="cursor"></div>
+							</div>
+						</div>
+
+						<div id="about" class="about-mobile">
+							Let's connect through one of the platforms below.
+						</div>
+
+						<i class="far fa-moon"></i>
+						<label class="swtich">
+							<input type="checkbox" onClick="nightMode()">
+							<span class="slider round"></span>
+						</label>
+						<i class="far fa-sun"></i>
+
+					</div>
+				</div>
+			</header>
+			<footer id="connect" class="mdl-mini-footer">
+
+				<ul id="footer-links" class="mdl-mini-footer__link-list">
+					<li>
+						<a href="https://github.com/PauloLuccas">
+							<i class="fab fa-github fa-2x" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/in/paulo-lucas-raimundo-a14271150/">
+							<i class="fab fa-linkedin-in fa-2x" aria-hidden="true"></i>
+						</a>	
+					</li>
+					<li>
+						<a href="https://www.instagram.com/paulolluccas/">
+							<i class="fab fa-instagram fa-2x" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://twitter.com/paulolluccas">
+							<i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="mailto: paulo_lucas_raimundo@hotmail.com">
+							<i class="far fa-envelope fa-2x" aria-hidden="true"></i>
+						</a>
+					</li>
+				</ul>
+				
+			</footer>
+		</div>
+		<script type="text/javascript" src="js/script.js"></script>
+		<script>
+			var typer = {
+				words: ['Systems Developer', 'Maker'],
+				wordIndex: 0,
+				speed: 150,
+				nextWordWait: 1000,
+				html: {
+					word: document.querySelector('.myWord')
+				},
+				init: function init() {
+					this.typeLetter();
+				},
+				typeLetter: function typeLetter() {
+					var _this = this;
+
+					var timer = arguments.length <= 0 || arguments[0] === undefined ? this.speed : arguments[0];
+
+					setTimeout(function (){
+						var word = {
+							finished: _this.words[_this.wordIndex], current: _this.readWord()
+						};
+
+						var nextLetterIndex = word.finished.length - word.current.length;
+						if (nextLetterIndex > 0){
+							nextLetterIndex = word.finished.length - nextLetterIndex;
+							var nextLetter = word.finished[nextLetterIndex];
+							_this.html.word.innerHTML += nextLetter;
+							_this.typeLetter();
+							return;
+						}
+						_this.nextWord();
+					}, timer);
+				},
+				readWord: function readWord() {
+					return this.html.word.innerHTML;
+				},
+				clearWord: function clearWord() {
+					this.html.word.innerHTML = '';
+				},
+				nextWord: function nextWord() {
+					var _this2 = this;
+
+					this.wordIndex++;
+					if (this.wordIndex == this.words.length) {
+						this.wordIndex = 0;
+					}
+					setTimeout(function() {
+						_this2.clearWord();
+						_this2.typeLetter(_this2.nextWordWait);
+					}, this.nextWordWait);
+				}
+			};
+
+			typer.init();
+		</script>
+	</body>
+</html>
